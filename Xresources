@@ -1,0 +1,25 @@
+! urxvt
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: yellow
+URxvt*font: xft:Iosevka Nerd Font:size=11:antialias=true
+!URxvt*font: xft:AnonymicePowerline Nerd Font:size=12:antialias=true
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 5000
+URxvt*termName: rxvt-256color
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: chromium-browser
+URxvt.matcher.button: 1
+URxvt*background: rgba:1f00/2000/2200/aaaa
+
+#include ".Xresources.d/spacemacs.dark"
