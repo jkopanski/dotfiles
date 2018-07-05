@@ -57,7 +57,7 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   -- launch a terminal
   [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
   -- launch dmenu
-  , ((modm,               xK_p     ), spawn "rofi -show run")
+  , ((modm,               xK_p     ), spawn "zsh -c \"rofi -show run\"")
   -- launch qutebrowser
   , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
   -- close focused window
