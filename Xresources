@@ -8,7 +8,7 @@ Xft.rgba: rgb
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
-URxvt*font: xft:IosevkaCC Slab Light:size=15:antialias=true
+URxvt*font: xft:Input:size=15:antialias=true
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -16,9 +16,9 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-256color
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 URxvt.urlLauncher: chromium-browser
 URxvt.matcher.button: 1
 URxvt*background: rgba:1f00/2000/2200/bbbb
 
-#include ".Xresources.d/spacemacs.dark"
+#include "Xresources.d/spacemacs.dark"
