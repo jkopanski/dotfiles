@@ -1,0 +1,5 @@
+export NIX_SKIP_KEYBASE_CHECKS=1
+
+export PATH="${HOME}/workareas.d/node_modules/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.cargo/bin:${PATH}"
