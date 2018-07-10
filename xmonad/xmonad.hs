@@ -1,10 +1,15 @@
 import XMonad
-import XMonad.Hooks.DynamicLog (dynamicLog)
+import XMonad.Hooks.DynamicLog     (dynamicLog)
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog (PP (..), xmobarColor, xmobarPP, statusBar, wrap)
-import XMonad.Layout.NoBorders (smartBorders)
-import XMonad.Layout.Spacing (smartSpacing)
-import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Hooks.DynamicLog     (PP (..), xmobarColor, xmobarPP, statusBar, wrap)
+import XMonad.Layout.NoBorders     (smartBorders)
+import XMonad.Layout.Spacing       (smartSpacing)
+import XMonad.Util.NamedScratchpad ( NamedScratchpad (..)
+                                   , customFloating
+                                   , namedScratchpadAction
+                                   , namedScratchpadManageHook
+                                   )
+import XMonad.Util.SpawnOnce       (spawnOnce)
 
 import Data.Monoid
 import System.Exit
@@ -14,7 +19,7 @@ import qualified Data.Map        as M
 
 import Colors
 
-homeDir = "/home/jkopanski"
+homeDir = "/home/nat"
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -50,6 +55,24 @@ myWorkspaces    = [ "1: <fn=1>\xf0ac</fn>"
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = cblkBg
 myFocusedBorderColor = border
+
+-- Named Scratchpads
+-- Semi full screen windows with often used programs
+-- keybase
+-- ncpamixer
+-- terminal
+myScratchpads   = [ NS "keybase"
+                       "keybase-gui" (className =? "Keybase")
+                       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+                  , NS "term"
+                       "urxvt -title termscratch"
+                       (title =? "termscratch")
+                       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+                  , NS "mixer"
+                       "urxvt -title mixer -e ncpamixer"
+                       (title =? "mixer")
+                       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+                  ]
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -101,7 +124,10 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
   -- Restart xmonad
   , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
-
+  -- Show terminal
+  , ((noModMask         , xK_F12   ), namedScratchpadAction myScratchpads "term")
+  , ((modm .|. shiftMask, xK_m     ), namedScratchpadAction myScratchpads "mixer")
+  , ((modm              , xK_u     ), namedScratchpadAction myScratchpads "keybase")
   ]
   ++
   --
@@ -172,6 +198,7 @@ myManageHook = composeAll
   , className =? "MPlayer"        --> doFloat
   , className =? "Gimp"           --> doFloat
   , resource  =? "desktop_window" --> doIgnore
+  , namedScratchpadManageHook myScratchpads
   ]
 
 ------------------------------------------------------------------------
@@ -196,7 +223,7 @@ myLogHook = dynamicLog
 -- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
 myStartupHook :: X ()
-myStartupHook = spawnOnce ("feh --bg-scale -z " ++ homeDir ++ "/wallpapers.d/violet")
+myStartupHook = spawnOnce ("feh --bg-scale -z " ++ homeDir ++ "/wallpapers.d")
 
 conf = def
   { borderWidth        = myBorderWidth
