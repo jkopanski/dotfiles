@@ -72,6 +72,14 @@ myScratchpads   = [ NS "keybase"
                        "urxvt -title mixer -e ncpamixer"
                        (title =? "mixer")
                        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+                  , NS "hoogle"
+                       "urxvt -title hoogle -e bhoogle"
+                       (title =? "hoogle")
+                       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+                  , NS "weechat"
+                       "urxvt -title weechat -e weechat"
+                       (title =? "WeeChat 2.0")
+                       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
                   ]
 
 ------------------------------------------------------------------------
@@ -128,6 +136,8 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   , ((noModMask         , xK_F12   ), namedScratchpadAction myScratchpads "term")
   , ((modm .|. shiftMask, xK_m     ), namedScratchpadAction myScratchpads "mixer")
   , ((modm              , xK_u     ), namedScratchpadAction myScratchpads "keybase")
+  , ((modm .|. shiftMask, xK_h     ), namedScratchpadAction myScratchpads "hoogle")
+  , ((modm              , xK_i     ), namedScratchpadAction myScratchpads "weechat")
   ]
   ++
   --
