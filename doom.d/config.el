@@ -10,3 +10,11 @@
     (new-build . ,(lambda (root) (when (or (directory-files root nil ".+\\.cabal$") (file-exists-p "cabal.project"))
                                    '("cabal" "new-repl" dante-target "--builddir=dist/dante"))))
     (bare . ,(lambda (_) '("cabal" "repl" dante-target "--builddir=dist/dante"))))))
+
+(after! web-mode
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(after! typescript-mode
+  (setq typescript-indent-level 2))
