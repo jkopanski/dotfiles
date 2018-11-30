@@ -1,4 +1,9 @@
-(setq doom-font (font-spec :family "Input" :size 19))
+(setq doom-font (font-spec :family "Input" :size 16))
+
+(def-package! dhall-mode)
+(def-package! direnv)
+
+(direnv-mode)
 
 (after! dante
 (setq-default
@@ -18,3 +23,5 @@
 
 (after! typescript-mode
   (setq typescript-indent-level 2))
+
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
