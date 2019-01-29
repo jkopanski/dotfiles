@@ -78,7 +78,7 @@ myScratchpads   = [ NS "keybase"
                        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
                   , NS "weechat"
                        "urxvt -title weechat -e weechat"
-                       (title =? "WeeChat 2.0")
+                       ((title =? "WeeChat 2.0") <||> (title =? "weechat"))
                        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
                   ]
 
