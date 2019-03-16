@@ -90,7 +90,7 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   -- launch dmenu
   , ((modm,               xK_p     ), spawn "zsh -c \"rofi -show run\"")
   -- launch qutebrowser
-  , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
+  -- , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
   -- close focused window
   , ((modm .|. shiftMask, xK_c     ), kill)
   -- Rotate through the available layout algorithms
@@ -134,18 +134,18 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
   -- Show terminal
   , ((noModMask         , xK_F12   ), namedScratchpadAction myScratchpads "term")
-  , ((modm .|. shiftMask, xK_m     ), namedScratchpadAction myScratchpads "mixer")
+  , ((modm              , xK_m     ), namedScratchpadAction myScratchpads "mixer")
   , ((modm              , xK_u     ), namedScratchpadAction myScratchpads "keybase")
   , ((modm .|. shiftMask, xK_h     ), namedScratchpadAction myScratchpads "hoogle")
-  , ((modm              , xK_i     ), namedScratchpadAction myScratchpads "weechat")
+  , ((modm              , xK_e     ), namedScratchpadAction myScratchpads "weechat")
   ]
   ++
   --
-  -- mod-[1..9], Switch to workspace N
-  -- mod-shift-[1..9], Move client to workspace N
+  -- [F1..F11], Switch to workspace N
+  -- shift-[F1..F11], Move client to workspace N
   --
-  [((m .|. modm, k), windows $ f i)
-    | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+  [((m, k), windows $ f i)
+    | (i, k) <- zip (XMonad.workspaces conf) [xK_F1 .. xK_F11]
     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
   ++
   --
