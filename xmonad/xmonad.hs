@@ -51,6 +51,7 @@ myWorkspaces    = [ "1: <fn=1>\xf0ac</fn>"
                   , "7: <fn=1>\xf001</fn>"
                   , "8: <fn=1>\xf04b</fn>"
                   , "9: <fn=1>\xf1d1</fn>"
+                  , "10: <fn=1>\xf1d1</fn>"
                   ]
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = cblkBg
@@ -90,7 +91,7 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   -- launch dmenu
   , ((modm,               xK_p     ), spawn "zsh -c \"rofi -show run\"")
   -- launch qutebrowser
-  -- , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
+  , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
   -- close focused window
   , ((modm .|. shiftMask, xK_c     ), kill)
   -- Rotate through the available layout algorithms
@@ -134,18 +135,18 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
   -- Show terminal
   , ((noModMask         , xK_F12   ), namedScratchpadAction myScratchpads "term")
-  , ((modm              , xK_m     ), namedScratchpadAction myScratchpads "mixer")
+  , ((modm .|. shiftMask, xK_m     ), namedScratchpadAction myScratchpads "mixer")
   , ((modm              , xK_u     ), namedScratchpadAction myScratchpads "keybase")
   , ((modm .|. shiftMask, xK_h     ), namedScratchpadAction myScratchpads "hoogle")
-  , ((modm              , xK_e     ), namedScratchpadAction myScratchpads "weechat")
+  , ((modm              , xK_i     ), namedScratchpadAction myScratchpads "weechat")
   ]
   ++
   --
-  -- [F1..F11], Switch to workspace N
-  -- shift-[F1..F11], Move client to workspace N
+  -- [F1..F10], Switch to workspace N
+  -- shift-[F1..F10], Move client to workspace N
   --
-  [((m, k), windows $ f i)
-    | (i, k) <- zip (XMonad.workspaces conf) [xK_F1 .. xK_F11]
+  [((m .|. noModMask, k), windows $ f i)
+    | (i, k) <- zip (XMonad.workspaces conf) [xK_F1 .. xK_F10]
     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
   ++
   --
