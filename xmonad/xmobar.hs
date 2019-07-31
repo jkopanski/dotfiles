@@ -57,14 +57,14 @@ Config
 
                           , "--" -- battery specific options
                                     -- discharging status
-                                    , "-o"	, "<left>%"
+                                    , "-o", "<left>%"
                                     -- AC "on" status
-                                    , "-O"	, "<fn=1>\xf0e7</fn> <left>%"
+                                    , "-O", "<fn=1>\xf0e7</fn> <left>%"
                                   -- charged status
-                                    , "-i"	, "<fc=#006000>Charged</fc>"
+                                    , "-i", "<fc=#006000>Charged</fc>"
                           ] 50
 
-    -- time and date indicator 
+    -- time and date indicator
     --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
     , Run Date           "<fn=1>\xf073</fn> %F (%a) -> <fn=1>\xf017</fn> %T" "date" 10
 

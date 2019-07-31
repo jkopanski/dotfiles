@@ -103,23 +103,23 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   -- Move focus to the next window
   , ((modm,               xK_Tab   ), windows W.focusDown)
   -- Move focus to the next window
-  , ((modm,               xK_j     ), windows W.focusDown)
+  , ((modm,               xK_h     ), windows W.focusDown)
   -- Move focus to the previous window
-  , ((modm,               xK_k     ), windows W.focusUp  )
+  , ((modm,               xK_t     ), windows W.focusUp  )
   -- Move focus to the master window
   , ((modm,               xK_m     ), windows W.focusMaster  )
   -- Swap the focused window and the master window
   -- , ((modm,               xK_Return), windows W.swapMaster)
   -- Swap the focused window with the next window
-  , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
+  , ((modm,               xK_d     ), windows W.swapDown  )
   -- Swap the focused window with the previous window
-  , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+  , ((modm,               xK_n     ), windows W.swapUp    )
   -- Shrink the master area
-  , ((modm,               xK_h     ), sendMessage Shrink)
+  , ((modm,               xK_c     ), sendMessage Shrink)
   -- Expand the master area
-  , ((modm,               xK_l     ), sendMessage Expand)
+  , ((modm,               xK_g     ), sendMessage Expand)
   -- Push window back into tiling
-  , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+  , ((modm,               xK_f     ), withFocused $ windows . W.sink)
   -- Increment the number of windows in the master area
   , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
   -- Deincrement the number of windows in the master area
@@ -130,9 +130,9 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   --
   -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
   -- Quit xmonad
-  , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+  -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
   -- Restart xmonad
-  , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
+  -- , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
   -- Show terminal
   , ((noModMask         , xK_F12   ), namedScratchpadAction myScratchpads "term")
   , ((modm .|. shiftMask, xK_m     ), namedScratchpadAction myScratchpads "mixer")
