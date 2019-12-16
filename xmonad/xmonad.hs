@@ -79,7 +79,7 @@ myScratchpads   = [ NS "keybase"
                        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
                   , NS "weechat"
                        "urxvt -title weechat -e weechat"
-                       ((title =? "WeeChat 2.0") <||> (title =? "weechat"))
+                       ((title =? "WeeChat 2.6") <||> (title =? "weechat"))
                        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
                   ]
 
@@ -91,7 +91,7 @@ myKeys conf@(XConfig {modMask = modm}) = M.fromList $
   -- launch dmenu
   , ((modm,               xK_p     ), spawn "zsh -c \"rofi -show run\"")
   -- launch qutebrowser
-  , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
+  -- , ((modm,               xK_q     ), spawn "qutebrowser --backend webengine")
   -- close focused window
   , ((modm .|. shiftMask, xK_c     ), kill)
   -- Rotate through the available layout algorithms
